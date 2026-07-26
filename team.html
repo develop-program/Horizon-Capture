@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>成员介绍 · 瞰界 Horizon Capture</title>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <nav class="navbar" id="navbar">
+    <a href="index.html" class="logo">瞰界Horizon Capture</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="team.html">Team</a></li>
+      <li><a href="join.html">Join</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <section class="page-section">
+    <h1 class="section-title" data-aos="fade-up">核心成员</h1>
+    <p class="section-subtitle" data-aos="fade-up">因为热爱，所以相聚。</p>
+
+    <div class="team-grid-full" data-aos="fade-up">
+      <!-- Hfunyin -->
+      <div class="team-card-full" data-member="hfunyin">
+        <div class="member-avatar placeholder-img">图片</div>
+        <h3 class="member-name">Hfunyin</h3>
+        <p class="member-role">创始人 / 运营</p>
+        <p class="member-bio">运营抖音账号，获大疆创作者激励大赛二等奖，以旅行故事讲好了一份坚守。</p>
+        <div class="member-links">
+          <a href="https://v.douyin.com/bNrMn_zx50Y/" target="_blank" class="member-link-item">「旅途光影」抖音代表作</a>
+        </div>
+        <button class="member-detail-toggle" onclick="toggleDetail('hfunyin')">查看详情</button>
+      </div>
+
+      <!-- YG -->
+      <div class="team-card-full" data-member="yg">
+        <div class="member-avatar placeholder-img">图片</div>
+        <h3 class="member-name">YG</h3>
+        <p class="member-role">资金与后期运营</p>
+        <p class="member-bio">视频号 / B站内容策划者，有微电影拍摄经验，擅长人像摄影和视频制作。</p>
+        <div class="member-links">
+          <span class="member-pending-link">「城市角落」图片待补充</span>
+          <span class="member-pending-link">「微电影」B站链接待补充</span>
+        </div>
+        <button class="member-detail-toggle" onclick="toggleDetail('yg')">查看详情</button>
+      </div>
+
+      <!-- 追羽揽星河 -->
+      <div class="team-card-full" data-member="zhuiyu">
+        <div class="member-avatar placeholder-img">图片</div>
+        <h3 class="member-name">追羽揽星河</h3>
+        <p class="member-role">主力摄影师 / 合伙人</p>
+        <p class="member-bio">擅长自然生态摄影，春节期间在云南百花岭和犀鸟谷完成鸟类专题拍摄，星空摄影，胶片冲洗，Sony Imaging PRO Support 专业会员。</p>
+        <div class="member-links">
+          <a href="https://v.douyin.com/9OnUNkDJEWg/" target="_blank" class="member-link-item">「自然生灵」抖音代表作</a>
+          <span class="member-pending-link">「星空故事」图片待补充</span>
+        </div>
+        <button class="member-detail-toggle" onclick="toggleDetail('zhuiyu')">查看详情</button>
+      </div>
+
+      <!-- 易匀 -->
+      <div class="team-card-full" data-member="yiyun">
+        <div class="member-avatar placeholder-img">图片</div>
+        <h3 class="member-name">易匀</h3>
+        <p class="member-role">后期剪辑</p>
+        <p class="member-bio">负责团队视频后期制作，用剪辑讲述镜头语言。</p>
+        <button class="member-detail-toggle" onclick="toggleDetail('yiyun')">查看详情</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 成员详情弹窗（预留） -->
+  <div class="member-detail-modal" id="detailModal">
+    <div class="modal-overlay" onclick="toggleDetail()"></div>
+    <div class="modal-content">
+      <span class="modal-close" onclick="toggleDetail()">&times;</span>
+      <div class="modal-body" id="modalBody">
+        <!-- 动态填充 -->
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-logo">瞰界 Horizon Capture</div>
+    <p>contact@kanjiesheying.qq.com</p>
+    <p class="copyright">© 2025 瞰界 Horizon Capture. All rights reserved.</p>
+  </footer>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    // 成员详情数据
+    const memberDetails = {
+      hfunyin: {
+        name: 'Hfunyin',
+        role: '创始人 / 运营',
+        bio: '运营抖音账号，获大疆创作者激励大赛二等奖，以旅行故事讲好了一份坚守。',
+        equipment: 'Sony A7M3, DJI Mini3 Pro',
+        works: '旅途光影系列',
+        links: '<a href="https://v.douyin.com/bNrMn_zx50Y/" target="_blank">抖音代表作</a>'
+      },
+      yg: {
+        name: 'YG',
+        role: '资金与后期运营',
+        bio: '视频号/B站内容策划者，有微电影拍摄经验，擅长人像摄影和视频制作。',
+        equipment: 'Sony A7R2, DJI Air3s',
+        works: '城市角落、微电影',
+        links: '作品链接待补充'
+      },
+      zhuiyu: {
+        name: '追羽揽星河',
+        role: '主力摄影师 / 合伙人',
+        bio: '擅长自然生态摄影，云南百花岭和犀鸟谷鸟类专题，星空摄影，胶片冲洗，Sony Imaging PRO Support 专业会员。',
+        equipment: 'Sony A6700, 胶片机, DJI Mavic Pro',
+        works: '自然生灵、星空故事',
+        links: '<a href="https://v.douyin.com/9OnUNkDJEWg/" target="_blank">自然生灵抖音</a>'
+      },
+      yiyun: {
+        name: '易匀',
+        role: '后期剪辑',
+        bio: '负责团队视频后期制作，用剪辑讲述镜头语言。',
+        equipment: '剪辑软件：DaVinci Resolve, Premiere Pro',
+        works: '多部微电影后期',
+        links: ''
+      }
+    };
+
+    function toggleDetail(memberId) {
+      const modal = document.getElementById('detailModal');
+      if (!modal) return;
+
+      if (!memberId || modal.style.display === 'flex') {
+        // 关闭
+        modal.style.display = 'none';
+        return;
+      }
+
+      const data = memberDetails[memberId];
+      if (!data) return;
+
+      const body = document.getElementById('modalBody');
+      body.innerHTML = `
+        <h2>${data.name}</h2>
+        <p class="modal-role">${data.role}</p>
+        <p>${data.bio}</p>
+        <div class="modal-info">
+          <p><strong>设备：</strong>${data.equipment}</p>
+          <p><strong>代表作品：</strong>${data.works}</p>
+          ${data.links ? `<p><strong>链接：</strong>${data.links}</p>` : ''}
+        </div>
+      `;
+      modal.style.display = 'flex';
+    }
+
+    // 点击遮罩关闭
+    document.querySelector('.modal-overlay')?.addEventListener('click', () => toggleDetail());
+  </script>
+</body>
+</html>

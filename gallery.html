@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>作品展示 · 瞰界 Horizon Capture</title>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <nav class="navbar" id="navbar">
+    <a href="index.html" class="logo">瞰界Horizon Capture</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="team.html">Team</a></li>
+      <li><a href="join.html">Join</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <section class="page-section">
+    <h1 class="section-title" data-aos="fade-up">作品展示</h1>
+    <p class="section-subtitle" data-aos="fade-up">每张照片背后，都是一次飞行与等待。</p>
+
+    <!-- 分类筛选 -->
+    <div class="filter-bar" data-aos="fade-up">
+      <button class="filter-btn active" data-filter="all">全部</button>
+      <button class="filter-btn" data-filter="航空摄影">航空摄影</button>
+      <button class="filter-btn" data-filter="风景">风景</button>
+      <button class="filter-btn" data-filter="动物">动物</button>
+      <button class="filter-btn" data-filter="活动">活动</button>
+      <button class="filter-btn" data-filter="视频">视频</button>
+    </div>
+
+    <!-- 作品网格 -->
+    <div class="gallery-masonry" id="galleryGrid" data-aos="fade-up">
+      <div class="gallery-item" data-category="航空摄影">
+        <div class="placeholder-img">航空摄影</div>
+        <div class="item-overlay"><span>起飞瞬间</span></div>
+      </div>
+      <div class="gallery-item" data-category="风景">
+        <div class="placeholder-img">风景</div>
+        <div class="item-overlay"><span>云端日落</span></div>
+      </div>
+      <div class="gallery-item" data-category="动物">
+        <div class="placeholder-img">动物</div>
+        <div class="item-overlay"><span>腾冲鸟类</span></div>
+      </div>
+      <div class="gallery-item" data-category="活动">
+        <div class="placeholder-img">活动</div>
+        <div class="item-overlay"><span>团队外拍</span></div>
+      </div>
+      <div class="gallery-item" data-category="视频">
+        <div class="placeholder-img">视频</div>
+        <div class="item-overlay"><span>微电影预告</span></div>
+      </div>
+      <div class="gallery-item" data-category="航空摄影">
+        <div class="placeholder-img">航空摄影</div>
+        <div class="item-overlay"><span>穿云</span></div>
+      </div>
+      <div class="gallery-item" data-category="风景">
+        <div class="placeholder-img">风景</div>
+        <div class="item-overlay"><span>城市剪影</span></div>
+      </div>
+      <div class="gallery-item" data-category="动物">
+        <div class="placeholder-img">动物</div>
+        <div class="item-overlay"><span>犀鸟谷</span></div>
+      </div>
+      <div class="gallery-item" data-category="活动">
+        <div class="placeholder-img">活动</div>
+        <div class="item-overlay"><span>一周年庆</span></div>
+      </div>
+      <div class="gallery-item" data-category="视频">
+        <div class="placeholder-img">视频</div>
+        <div class="item-overlay"><span>幕后花絮</span></div>
+      </div>
+      <div class="gallery-item" data-category="航空摄影">
+        <div class="placeholder-img">航空摄影</div>
+        <div class="item-overlay"><span>夜间降落</span></div>
+      </div>
+      <div class="gallery-item" data-category="风景">
+        <div class="placeholder-img">风景</div>
+        <div class="item-overlay"><span>雪山经幡</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox">
+    <span class="lightbox-close" id="closeLightbox">&times;</span>
+    <button class="lightbox-nav prev" id="prevBtn">‹</button>
+    <div class="lightbox-content" id="lightboxContent">
+      <div class="placeholder-img" style="width:100%; height:60vh;">图片</div>
+    </div>
+    <button class="lightbox-nav next" id="nextBtn">›</button>
+  </div>
+
+  <footer>
+    <div class="footer-logo">瞰界 Horizon Capture</div>
+    <p>contact@kanjiesheying.qq.com</p>
+    <p class="copyright">© 2025 瞰界 Horizon Capture. All rights reserved.</p>
+  </footer>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    // 筛选功能
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const items = document.querySelectorAll('.gallery-item');
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const filter = btn.dataset.filter;
+        items.forEach(item => {
+          if (filter === 'all' || item.dataset.category === filter) {
+            item.style.display = 'block';
+          } else {
+            item.style.display = 'none';
+          }
+        });
+      });
+    });
+
+    // Lightbox 逻辑
+    const lightbox = document.getElementById('lightbox');
+    const lightboxContent = document.getElementById('lightboxContent');
+    const closeBtn = document.getElementById('closeLightbox');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    let currentItems = [];
+    let currentIndex = 0;
+
+    function updateLightbox() {
+      const item = currentItems[currentIndex];
+      const overlayText = item.querySelector('.item-overlay span').textContent;
+      lightboxContent.innerHTML = `<div class="placeholder-img" style="width:100%; height:60vh;">${overlayText}</div>`;
+    }
+
+    items.forEach((item, index) => {
+      item.addEventListener('click', () => {
+        currentItems = Array.from(document.querySelectorAll('.gallery-item')).filter(i => i.style.display !== 'none');
+        currentIndex = currentItems.indexOf(item);
+        if (currentIndex === -1) currentIndex = 0;
+        updateLightbox();
+        lightbox.classList.add('active');
+      });
+    });
+
+    closeBtn.addEventListener('click', () => lightbox.classList.remove('active'));
+    prevBtn.addEventListener('click', () => {
+      if (currentItems.length === 0) return;
+      currentIndex = (currentIndex - 1 + currentItems.length) % currentItems.length;
+      updateLightbox();
+    });
+    nextBtn.addEventListener('click', () => {
+      if (currentItems.length === 0) return;
+      currentIndex = (currentIndex + 1) % currentItems.length;
+      updateLightbox();
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (!lightbox.classList.contains('active')) return;
+      if (e.key === 'Escape') lightbox.classList.remove('active');
+      if (e.key === 'ArrowLeft') prevBtn.click();
+      if (e.key === 'ArrowRight') nextBtn.click();
+    });
+
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) lightbox.classList.remove('active');
+    });
+  </script>
+</body>
+</html>
