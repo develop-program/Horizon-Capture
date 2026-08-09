@@ -1,16 +1,13 @@
-/* ========== 全局样式 ========== */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
+/* ========== 全局变量 ========== */
 :root {
   --bg: #ffffff;
   --surface: #f5f5f7;
   --text: #1d1d1f;
   --text-secondary: #86868b;
-  --accent: #2997ff;
+  --accent: #b3deff;
+  --accent-deep: #9ac8f0;
+  --accent-light: #e6f4ff;
+  --accent-soft: #f0f7fc;
   --glass-bg: rgba(255, 255, 255, 0.72);
   --glass-blur: saturate(180%) blur(20px);
   --max-width: 1200px;
@@ -19,9 +16,16 @@
   --placeholder-text: #999;
 }
 
+/* ========== 全局样式 ========== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  background: var(--bg);
+  background: linear-gradient(180deg, var(--accent-soft) 0%, var(--bg) 300px, var(--bg) 100%);
   color: var(--text);
   line-height: 1.6;
   overflow-x: hidden;
@@ -29,11 +33,11 @@ body {
 
 /* ========== 占位图片 ========== */
 .placeholder-img {
-  background: var(--placeholder-bg);
+  background: linear-gradient(135deg, var(--accent-light) 0%, #dceefb 100%);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--placeholder-text);
+  color: var(--text-secondary);
   font-size: 1.2rem;
   font-weight: 500;
   letter-spacing: 2px;
@@ -53,14 +57,15 @@ body {
   align-items: center;
   justify-content: space-between;
   padding: 0 40px;
-  transition: background 0.3s, backdrop-filter 0.3s;
+  transition: background 0.3s, backdrop-filter 0.3s, border-color 0.3s;
+  border-bottom: 1px solid transparent;
 }
 
 .navbar.scrolled {
-  background: var(--glass-bg);
+  background: rgba(255, 255, 255, 0.75);
   backdrop-filter: var(--glass-blur);
   -webkit-backdrop-filter: var(--glass-blur);
-  border-bottom: 1px solid rgba(128, 128, 128, 0.15);
+  border-bottom: 1px solid var(--accent);
 }
 
 .logo {
@@ -69,6 +74,10 @@ body {
   letter-spacing: 2px;
   color: var(--text);
   text-decoration: none;
+  background: linear-gradient(135deg, var(--text) 0%, var(--accent-deep) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .nav-links {
@@ -83,10 +92,26 @@ body {
   font-weight: 500;
   font-size: 0.95rem;
   transition: color 0.2s;
+  position: relative;
 }
 
 .nav-links a:hover {
-  color: var(--accent);
+  color: var(--accent-deep);
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--accent-deep);
+  transition: width 0.3s;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
 }
 
 /* ========== 按钮 ========== */
@@ -104,14 +129,15 @@ body {
 
 .btn-primary {
   background: var(--accent);
-  color: #fff;
-  box-shadow: 0 4px 14px rgba(41, 151, 255, 0.4);
+  color: var(--text);
+  box-shadow: 0 4px 14px rgba(179, 222, 255, 0.5);
 }
 
 .btn-primary:hover {
-  background: #0077ed;
+  background: var(--accent-deep);
+  color: #fff;
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(41, 151, 255, 0.5);
+  box-shadow: 0 8px 24px rgba(154, 200, 240, 0.5);
 }
 
 .btn-outline {
@@ -121,8 +147,9 @@ body {
 }
 
 .btn-outline:hover {
-  background: #fff;
-  color: #000;
+  background: var(--accent);
+  color: var(--text);
+  border-color: var(--accent);
 }
 
 .btn-outline-dark {
@@ -131,8 +158,9 @@ body {
 }
 
 .btn-outline-dark:hover {
-  background: var(--text);
-  color: var(--bg);
+  background: var(--accent);
+  color: var(--text);
+  border-color: var(--accent);
 }
 
 /* ========== Hero ========== */
@@ -162,7 +190,7 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.45);
+  background: linear-gradient(180deg, rgba(179, 222, 255, 0.3) 0%, rgba(0, 0, 0, 0.5) 100%);
   z-index: 0;
 }
 
@@ -206,6 +234,19 @@ section {
   font-size: 2.5rem;
   font-weight: 700;
   margin-bottom: 1rem;
+  position: relative;
+  display: inline-block;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 60%;
+  height: 4px;
+  background: var(--accent);
+  border-radius: 2px;
 }
 
 .section-subtitle {
@@ -236,11 +277,12 @@ section {
 }
 
 .tag {
-  background: var(--surface);
-  padding: 6px 16px;
+  background: var(--accent-light);
+  padding: 8px 20px;
   border-radius: 20px;
   font-size: 0.85rem;
-  color: var(--text-secondary);
+  color: var(--text);
+  font-weight: 500;
 }
 
 /* Featured Gallery */
@@ -255,12 +297,14 @@ section {
   border-radius: 20px;
   overflow: hidden;
   cursor: pointer;
-  transition: transform 0.4s cubic-bezier(0.2, 0.9, 0.4, 1);
+  transition: transform 0.4s cubic-bezier(0.2, 0.9, 0.4, 1), box-shadow 0.4s;
   height: 280px;
+  box-shadow: 0 4px 16px rgba(179, 222, 255, 0.2);
 }
 
 .gallery-card:hover {
   transform: scale(1.03);
+  box-shadow: 0 12px 32px rgba(179, 222, 255, 0.4);
 }
 
 .gallery-info {
@@ -269,19 +313,19 @@ section {
   left: 0;
   right: 0;
   padding: 20px;
-  background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
-  color: #fff;
+  background: linear-gradient(transparent, rgba(179, 222, 255, 0.8));
+  color: var(--text);
 }
 
 /* 一周年卡片 */
 .anniversary-card {
-  background: var(--surface);
+  background: linear-gradient(135deg, var(--accent-soft) 0%, var(--accent-light) 100%);
   border-radius: 28px;
   padding: 48px 40px;
   text-align: center;
   max-width: 600px;
   margin: 0 auto;
-  box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.08);
+  border: 1px solid var(--accent);
 }
 
 .anniversary-card h3 {
@@ -313,14 +357,17 @@ section {
 
 .team-card {
   text-align: center;
-  background: var(--surface);
+  background: var(--bg);
   border-radius: 24px;
   padding: 32px 16px;
-  transition: transform 0.3s;
+  transition: transform 0.3s, box-shadow 0.3s;
+  border: 1px solid var(--accent-light);
 }
 
 .team-card:hover {
   transform: translateY(-8px);
+  box-shadow: 0 16px 36px rgba(179, 222, 255, 0.3);
+  border-color: var(--accent);
 }
 
 .team-avatar {
@@ -329,12 +376,14 @@ section {
   border-radius: 50%;
   margin: 0 auto 1rem;
   overflow: hidden;
+  border: 3px solid var(--accent);
 }
 
 .member-link {
-  color: var(--accent);
+  color: var(--accent-deep);
   font-size: 0.85rem;
   text-decoration: none;
+  font-weight: 600;
 }
 
 .member-pending {
@@ -344,9 +393,9 @@ section {
 
 /* Join CTA */
 .join-section {
-  background: var(--placeholder-bg);
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-deep) 100%);
   text-align: center;
-  color: #fff;
+  color: var(--text);
   border-radius: 32px;
   margin: 60px auto;
   padding: 100px 24px;
@@ -360,7 +409,7 @@ section {
   left: 0;
   width: 100%;
   height: 100%;
-  opacity: 0.3;
+  opacity: 0.15;
   font-size: 1.5rem;
 }
 
@@ -393,15 +442,18 @@ section {
 }
 
 .interact-card {
-  background: var(--surface);
+  background: var(--bg);
   border-radius: 24px;
   padding: 40px 24px;
   text-align: center;
-  transition: transform 0.3s;
+  transition: transform 0.3s, box-shadow 0.3s;
+  border: 1px solid var(--accent-light);
 }
 
 .interact-card:hover {
   transform: translateY(-6px);
+  box-shadow: 0 16px 36px rgba(179, 222, 255, 0.3);
+  border-color: var(--accent);
 }
 
 .interact-card h3 {
@@ -420,7 +472,8 @@ footer {
   padding: 40px 24px;
   text-align: center;
   color: var(--text-secondary);
-  border-top: 1px solid rgba(128, 128, 128, 0.2);
+  border-top: 2px solid var(--accent-light);
+  background: var(--accent-soft);
   font-size: 0.9rem;
 }
 
@@ -428,34 +481,11 @@ footer {
   font-size: 1.5rem;
   font-weight: 700;
   margin-bottom: 0.5rem;
+  color: var(--text);
 }
 
 .copyright {
   margin-top: 1rem;
-}
-
-/* ========== 响应式 ========== */
-@media (max-width: 768px) {
-  .navbar {
-    padding: 0 20px;
-  }
-
-  .nav-links {
-    display: none;
-  }
-
-  .about-grid,
-  .gallery-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .team-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .interact-grid {
-    grid-template-columns: 1fr;
-  }
 }
 
 /* ========== About 页面 ========== */
@@ -485,12 +515,23 @@ footer {
   height: 380px;
   border-radius: 24px;
   overflow: hidden;
+  box-shadow: 0 8px 28px rgba(179, 222, 255, 0.25);
 }
 
 .about-text h2 {
   font-size: 1.8rem;
   font-weight: 700;
   margin-bottom: 1rem;
+}
+
+.about-text h2::after {
+  content: '';
+  display: block;
+  width: 40px;
+  height: 3px;
+  background: var(--accent-deep);
+  margin-top: 8px;
+  border-radius: 2px;
 }
 
 .about-text p {
@@ -506,30 +547,11 @@ footer {
 }
 
 .plan-list li {
-  padding: 6px 0;
-}
-
-/* About 响应式 */
-@media (max-width: 768px) {
-  .about-row,
-  .about-row.reverse {
-    grid-template-columns: 1fr;
-    gap: 32px;
-  }
-
-  .about-row.reverse .about-img-box,
-  .about-row.reverse .about-text {
-    order: unset;
-  }
-
-  .about-img-box {
-    height: 240px;
-  }
+  padding: 8px 0;
+  border-bottom: 1px solid var(--accent-light);
 }
 
 /* ========== Gallery 页面 ========== */
-
-/* 分类筛选条 */
 .filter-bar {
   display: flex;
   gap: 12px;
@@ -540,7 +562,7 @@ footer {
 .filter-btn {
   padding: 8px 20px;
   border-radius: 20px;
-  border: 1px solid var(--text-secondary);
+  border: 1px solid var(--accent);
   background: none;
   color: var(--text);
   cursor: pointer;
@@ -552,10 +574,9 @@ footer {
 .filter-btn:hover {
   background: var(--accent);
   border-color: var(--accent);
-  color: #fff;
+  color: var(--text);
 }
 
-/* 作品网格 (瀑布流式三列) */
 .gallery-masonry {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -567,13 +588,14 @@ footer {
   border-radius: 16px;
   overflow: hidden;
   cursor: pointer;
-  transition: transform 0.3s;
-  background: var(--placeholder-bg);
-  aspect-ratio: 4 / 3;  /* 统一比例，可调整 */
+  transition: transform 0.3s, box-shadow 0.3s;
+  aspect-ratio: 4 / 3;
+  box-shadow: 0 4px 16px rgba(179, 222, 255, 0.2);
 }
 
 .gallery-item:hover {
   transform: scale(1.02);
+  box-shadow: 0 12px 32px rgba(179, 222, 255, 0.4);
 }
 
 .gallery-item .placeholder-img {
@@ -586,8 +608,8 @@ footer {
   left: 0;
   right: 0;
   padding: 24px 16px;
-  background: linear-gradient(transparent, rgba(0,0,0,0.7));
-  color: #fff;
+  background: linear-gradient(transparent, rgba(179, 222, 255, 0.85));
+  color: var(--text);
   font-weight: 500;
 }
 
@@ -599,7 +621,7 @@ footer {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0,0,0,0.92);
+  background: rgba(0, 0, 0, 0.92);
   z-index: 2000;
   align-items: center;
   justify-content: center;
@@ -625,7 +647,7 @@ footer {
   top: 50%;
   transform: translateY(-50%);
   font-size: 2.5rem;
-  color: #fff;
+  color: var(--accent);
   background: none;
   border: none;
   cursor: pointer;
@@ -648,21 +670,7 @@ footer {
   overflow: hidden;
 }
 
-/* Gallery 响应式 */
-@media (max-width: 768px) {
-  .gallery-masonry {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 12px;
-  }
-
-  .lightbox-nav {
-    font-size: 2rem;
-    padding: 0 8px;
-  }
-}
-
 /* ========== Team 页面 ========== */
-
 .team-grid-full {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -671,17 +679,18 @@ footer {
 }
 
 .team-card-full {
-  background: var(--surface);
+  background: var(--bg);
   border-radius: 28px;
   padding: 40px 32px;
   text-align: center;
   transition: transform 0.3s, box-shadow 0.3s;
-  position: relative;
+  border: 1px solid var(--accent-light);
 }
 
 .team-card-full:hover {
   transform: translateY(-8px);
-  box-shadow: 0 24px 48px -12px rgba(0,0,0,0.1);
+  box-shadow: 0 24px 48px -12px rgba(179, 222, 255, 0.35);
+  border-color: var(--accent);
 }
 
 .member-avatar {
@@ -690,6 +699,7 @@ footer {
   border-radius: 50%;
   margin: 0 auto 1.5rem;
   overflow: hidden;
+  border: 4px solid var(--accent);
 }
 
 .member-name {
@@ -699,7 +709,7 @@ footer {
 }
 
 .member-role {
-  color: var(--accent);
+  color: var(--accent-deep);
   font-weight: 600;
   font-size: 0.9rem;
   margin-bottom: 1rem;
@@ -721,9 +731,10 @@ footer {
 }
 
 .member-link-item {
-  color: var(--accent);
+  color: var(--accent-deep);
   font-size: 0.9rem;
   text-decoration: none;
+  font-weight: 600;
 }
 
 .member-pending-link {
@@ -733,7 +744,7 @@ footer {
 
 .member-detail-toggle {
   background: var(--accent);
-  color: #fff;
+  color: var(--text);
   border: none;
   padding: 8px 24px;
   border-radius: 20px;
@@ -743,7 +754,8 @@ footer {
 }
 
 .member-detail-toggle:hover {
-  background: #0077ed;
+  background: var(--accent-deep);
+  color: #fff;
 }
 
 /* 详情弹窗 */
@@ -765,7 +777,7 @@ footer {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0,0,0,0.6);
+  background: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(8px);
 }
 
@@ -778,6 +790,7 @@ footer {
   width: 90%;
   z-index: 1;
   text-align: center;
+  border: 1px solid var(--accent);
 }
 
 .modal-close {
@@ -795,7 +808,7 @@ footer {
 }
 
 .modal-role {
-  color: var(--accent);
+  color: var(--accent-deep);
   font-weight: 600;
   margin-bottom: 1.5rem;
 }
@@ -803,36 +816,27 @@ footer {
 .modal-info {
   margin-top: 1.5rem;
   text-align: left;
-  background: var(--surface);
+  background: var(--accent-light);
   padding: 20px;
   border-radius: 16px;
-  color: var(--text-secondary);
+  color: var(--text);
   line-height: 1.6;
 }
 
-/* Team 响应式 */
-@media (max-width: 768px) {
-  .team-grid-full {
-    grid-template-columns: 1fr;
-    gap: 24px;
-  }
-
-  .team-card-full {
-    padding: 32px 24px;
-  }
-}
 /* ========== Join 页面 ========== */
-
 .join-card {
-  background: var(--surface);
+  background: var(--bg);
   border-radius: 24px;
   padding: 40px 32px;
   margin-bottom: 32px;
-  transition: transform 0.3s;
+  transition: transform 0.3s, box-shadow 0.3s;
+  border: 1px solid var(--accent-light);
 }
 
 .join-card:hover {
   transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(179, 222, 255, 0.3);
+  border-color: var(--accent);
 }
 
 .join-card h3 {
@@ -854,7 +858,6 @@ footer {
   line-height: 1.8;
 }
 
-/* 组织优势网格 */
 .advantage-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -865,6 +868,8 @@ footer {
 .advantage-item {
   text-align: center;
   padding: 16px 12px;
+  background: var(--accent-soft);
+  border-radius: 16px;
 }
 
 .advantage-icon {
@@ -885,7 +890,6 @@ footer {
   line-height: 1.5;
 }
 
-/* 加入流程 */
 .flow-steps {
   display: flex;
   align-items: center;
@@ -896,12 +900,13 @@ footer {
 }
 
 .flow-step {
-  background: var(--bg);
+  background: var(--accent-soft);
   border-radius: 20px;
   padding: 24px 20px;
   text-align: center;
   flex: 1;
   min-width: 140px;
+  border: 1px solid var(--accent-light);
 }
 
 .flow-number {
@@ -909,7 +914,7 @@ footer {
   height: 40px;
   border-radius: 50%;
   background: var(--accent);
-  color: #fff;
+  color: var(--text);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -930,16 +935,15 @@ footer {
 
 .flow-arrow {
   font-size: 1.5rem;
-  color: var(--text-secondary);
+  color: var(--accent-deep);
 }
 
-/* FAQ */
 .faq-list {
   margin-top: 1rem;
 }
 
 .faq-item {
-  border-bottom: 1px solid rgba(128,128,128,0.15);
+  border-bottom: 1px solid var(--accent-light);
   padding: 16px 0;
 }
 
@@ -956,7 +960,7 @@ footer {
 .faq-item summary::after {
   content: '+';
   font-size: 1.2rem;
-  color: var(--accent);
+  color: var(--accent-deep);
 }
 
 .faq-item[open] summary::after {
@@ -969,13 +973,13 @@ footer {
   font-size: 0.95rem;
 }
 
-/* 报名 CTA */
 .join-cta {
-  background: var(--surface);
+  background: linear-gradient(135deg, var(--accent-soft) 0%, var(--accent-light) 100%);
   border-radius: 28px;
   padding: 60px 32px;
   text-align: center;
   margin-top: 40px;
+  border: 1px solid var(--accent);
 }
 
 .join-cta h2 {
@@ -991,7 +995,7 @@ footer {
 .join-email {
   font-size: 1.2rem;
   font-weight: 600;
-  color: var(--accent) !important;
+  color: var(--accent-deep) !important;
   margin-bottom: 2rem !important;
 }
 
@@ -1000,15 +1004,15 @@ footer {
   font-size: 1.1rem;
 }
 
-/* 报名表单（预留） */
 .join-form {
-  background: var(--surface);
+  background: var(--bg);
   border-radius: 24px;
   padding: 40px 32px;
   margin-top: 32px;
   display: flex;
   flex-direction: column;
   gap: 20px;
+  border: 1px solid var(--accent-light);
 }
 
 .form-group {
@@ -1025,12 +1029,13 @@ footer {
 .form-group input,
 .form-group textarea {
   padding: 12px 16px;
-  border: 1px solid rgba(128,128,128,0.3);
+  border: 1px solid var(--accent-light);
   border-radius: 12px;
   font-size: 1rem;
   background: var(--bg);
   color: var(--text);
   font-family: inherit;
+  transition: border-color 0.3s;
 }
 
 .form-group input:focus,
@@ -1039,32 +1044,7 @@ footer {
   border-color: var(--accent);
 }
 
-/* Join 响应式 */
-@media (max-width: 768px) {
-  .advantage-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .flow-steps {
-    flex-direction: column;
-  }
-
-  .flow-arrow {
-    transform: rotate(90deg);
-  }
-
-  .join-card {
-    padding: 28px 24px;
-  }
-
-  .join-cta {
-    padding: 40px 24px;
-  }
-}
-
 /* ========== Contact 页面 ========== */
-
-/* 联系信息三列 */
 .contact-info-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -1073,15 +1053,18 @@ footer {
 }
 
 .contact-info-card {
-  background: var(--surface);
+  background: var(--bg);
   border-radius: 24px;
   padding: 40px 24px;
   text-align: center;
-  transition: transform 0.3s;
+  transition: transform 0.3s, box-shadow 0.3s;
+  border: 1px solid var(--accent-light);
 }
 
 .contact-info-card:hover {
   transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(179, 222, 255, 0.3);
+  border-color: var(--accent);
 }
 
 .contact-icon {
@@ -1109,18 +1092,17 @@ footer {
 }
 
 .social-link {
-  color: var(--accent);
+  color: var(--accent-deep);
   text-decoration: none;
   font-size: 0.95rem;
+  font-weight: 600;
   transition: color 0.2s;
 }
 
 .social-link:hover {
-  color: #0077ed;
-  text-decoration: underline;
+  color: #7ab8e0;
 }
 
-/* Google Map 占位 */
 .map-placeholder {
   margin-bottom: 60px;
 }
@@ -1131,12 +1113,12 @@ footer {
   overflow: hidden;
 }
 
-/* 留言表单卡片 */
 .contact-form-card {
-  background: var(--surface);
+  background: var(--bg);
   border-radius: 28px;
   padding: 48px 40px;
   margin-bottom: 20px;
+  border: 1px solid var(--accent-light);
 }
 
 .contact-form-card h2 {
@@ -1156,7 +1138,6 @@ footer {
   gap: 20px;
 }
 
-/* 复用 Join 页面的表单样式，此处仅补充 Contact 特有 */
 .contact-form .form-group label {
   font-weight: 600;
   font-size: 0.9rem;
@@ -1165,7 +1146,7 @@ footer {
 .contact-form .form-group input,
 .contact-form .form-group textarea {
   padding: 14px 16px;
-  border: 1px solid rgba(128,128,128,0.25);
+  border: 1px solid var(--accent-light);
   border-radius: 14px;
   font-size: 1rem;
   background: var(--bg);
@@ -1181,8 +1162,83 @@ footer {
   border-color: var(--accent);
 }
 
-/* Contact 响应式 */
+/* ========== 响应式 ========== */
 @media (max-width: 768px) {
+  .navbar {
+    padding: 0 20px;
+  }
+
+  .nav-links {
+    display: none;
+  }
+
+  .about-grid,
+  .gallery-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .team-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .interact-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .about-row,
+  .about-row.reverse {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .about-row.reverse .about-img-box,
+  .about-row.reverse .about-text {
+    order: unset;
+  }
+
+  .about-img-box {
+    height: 240px;
+  }
+
+  .gallery-masonry {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .lightbox-nav {
+    font-size: 2rem;
+    padding: 0 8px;
+  }
+
+  .team-grid-full {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .team-card-full {
+    padding: 32px 24px;
+  }
+
+  .advantage-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .flow-steps {
+    flex-direction: column;
+  }
+
+  .flow-arrow {
+    transform: rotate(90deg);
+  }
+
+  .join-card {
+    padding: 28px 24px;
+  }
+
+  .join-cta {
+    padding: 40px 24px;
+  }
+
   .contact-info-grid {
     grid-template-columns: 1fr;
   }
