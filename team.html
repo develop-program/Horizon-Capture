@@ -8,15 +8,15 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <nav class="navbar" id="navbar">
+  <nav class="navbar solid" id="navbar">
     <a href="index.html" class="logo">瞰界Horizon Capture</a>
     <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="gallery.html">Gallery</a></li>
-      <li><a href="team.html">Team</a></li>
-      <li><a href="join.html">Join</a></li>
-      <li><a href="contact.html">Contact</a></li>
+      <li><a href="index.html">首页</a></li>
+      <li><a href="about.html">关于</a></li>
+      <li><a href="gallery.html">作品</a></li>
+      <li><a href="team.html">成员</a></li>
+      <li><a href="join.html">加入</a></li>
+      <li><a href="contact.html">联系</a></li>
     </ul>
   </nav>
 
@@ -25,7 +25,6 @@
     <p class="section-subtitle" data-aos="fade-up">因为热爱，所以相聚。</p>
 
     <div class="team-grid-full" data-aos="fade-up">
-      <!-- Hfunyin -->
       <div class="team-card-full" data-member="hfunyin">
         <div class="member-avatar placeholder-img">图片</div>
         <h3 class="member-name">Hfunyin</h3>
@@ -37,7 +36,6 @@
         <button class="member-detail-toggle" onclick="toggleDetail('hfunyin')">查看详情</button>
       </div>
 
-      <!-- YG -->
       <div class="team-card-full" data-member="yg">
         <div class="member-avatar placeholder-img">图片</div>
         <h3 class="member-name">YG</h3>
@@ -50,7 +48,6 @@
         <button class="member-detail-toggle" onclick="toggleDetail('yg')">查看详情</button>
       </div>
 
-      <!-- 追羽揽星河 -->
       <div class="team-card-full" data-member="zhuiyu">
         <div class="member-avatar placeholder-img">图片</div>
         <h3 class="member-name">追羽揽星河</h3>
@@ -63,7 +60,6 @@
         <button class="member-detail-toggle" onclick="toggleDetail('zhuiyu')">查看详情</button>
       </div>
 
-      <!-- 易匀 -->
       <div class="team-card-full" data-member="yiyun">
         <div class="member-avatar placeholder-img">图片</div>
         <h3 class="member-name">易匀</h3>
@@ -74,14 +70,11 @@
     </div>
   </section>
 
-  <!-- 成员详情弹窗（预留） -->
   <div class="member-detail-modal" id="detailModal">
     <div class="modal-overlay" onclick="toggleDetail()"></div>
     <div class="modal-content">
       <span class="modal-close" onclick="toggleDetail()">&times;</span>
-      <div class="modal-body" id="modalBody">
-        <!-- 动态填充 -->
-      </div>
+      <div class="modal-body" id="modalBody"></div>
     </div>
   </div>
 
@@ -94,7 +87,6 @@
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script src="js/main.js"></script>
   <script>
-    // 成员详情数据
     const memberDetails = {
       hfunyin: {
         name: 'Hfunyin',
@@ -124,7 +116,7 @@
         name: '易匀',
         role: '后期剪辑',
         bio: '负责团队视频后期制作，用剪辑讲述镜头语言。',
-        equipment: '剪辑软件：DaVinci Resolve, Premiere Pro',
+        equipment: 'DaVinci Resolve, Premiere Pro',
         works: '多部微电影后期',
         links: ''
       }
@@ -135,7 +127,6 @@
       if (!modal) return;
 
       if (!memberId || modal.style.display === 'flex') {
-        // 关闭
         modal.style.display = 'none';
         return;
       }
@@ -157,7 +148,6 @@
       modal.style.display = 'flex';
     }
 
-    // 点击遮罩关闭
     document.querySelector('.modal-overlay')?.addEventListener('click', () => toggleDetail());
   </script>
 </body>
