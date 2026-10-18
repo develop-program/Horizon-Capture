@@ -8,15 +8,15 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <nav class="navbar" id="navbar">
+  <nav class="navbar solid" id="navbar">
     <a href="index.html" class="logo">瞰界Horizon Capture</a>
     <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="gallery.html">Gallery</a></li>
-      <li><a href="team.html">Team</a></li>
-      <li><a href="join.html">Join</a></li>
-      <li><a href="contact.html">Contact</a></li>
+      <li><a href="index.html">首页</a></li>
+      <li><a href="about.html">关于</a></li>
+      <li><a href="gallery.html">作品</a></li>
+      <li><a href="team.html">成员</a></li>
+      <li><a href="join.html">加入</a></li>
+      <li><a href="contact.html">联系</a></li>
     </ul>
   </nav>
 
@@ -24,7 +24,6 @@
     <h1 class="section-title" data-aos="fade-up">作品展示</h1>
     <p class="section-subtitle" data-aos="fade-up">每张照片背后，都是一次飞行与等待。</p>
 
-    <!-- 分类筛选 -->
     <div class="filter-bar" data-aos="fade-up">
       <button class="filter-btn active" data-filter="all">全部</button>
       <button class="filter-btn" data-filter="航空摄影">航空摄影</button>
@@ -34,7 +33,6 @@
       <button class="filter-btn" data-filter="视频">视频</button>
     </div>
 
-    <!-- 作品网格 -->
     <div class="gallery-masonry" id="galleryGrid" data-aos="fade-up">
       <div class="gallery-item" data-category="航空摄影">
         <div class="placeholder-img">航空摄影</div>
@@ -87,7 +85,6 @@
     </div>
   </section>
 
-  <!-- Lightbox -->
   <div class="lightbox" id="lightbox">
     <span class="lightbox-close" id="closeLightbox">&times;</span>
     <button class="lightbox-nav prev" id="prevBtn">‹</button>
@@ -106,7 +103,6 @@
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script src="js/main.js"></script>
   <script>
-    // 筛选功能
     const filterBtns = document.querySelectorAll('.filter-btn');
     const items = document.querySelectorAll('.gallery-item');
 
@@ -125,7 +121,6 @@
       });
     });
 
-    // Lightbox 逻辑
     const lightbox = document.getElementById('lightbox');
     const lightboxContent = document.getElementById('lightboxContent');
     const closeBtn = document.getElementById('closeLightbox');
@@ -140,7 +135,7 @@
       lightboxContent.innerHTML = `<div class="placeholder-img" style="width:100%; height:60vh;">${overlayText}</div>`;
     }
 
-    items.forEach((item, index) => {
+    items.forEach((item) => {
       item.addEventListener('click', () => {
         currentItems = Array.from(document.querySelectorAll('.gallery-item')).filter(i => i.style.display !== 'none');
         currentIndex = currentItems.indexOf(item);
