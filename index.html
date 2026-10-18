@@ -26,7 +26,7 @@
     <div class="hero-overlay"></div>
     <div class="hero-content">
       <h1 class="hero-title" id="heroTitle">用镜头记录青春，用热爱定义远方</h1>
-      <p class="hero-subtitle" id="heroSubtitle">瞰界摄影团队，成立于2025年4月12日，由一群带着热爱的学生组成，探索生活的第二种可能</p>
+      <p class="hero-subtitle" id="heroSubtitle">瞰界摄影团队，成立于2025年4月14日，由一群带着热爱的中学生组成，探索生活的第二种可能</p>
       <div class="hero-btns">
         <a href="gallery.html" class="btn btn-primary">浏览作品</a>
         <a href="join.html" class="btn btn-outline">加入我们</a>
@@ -135,7 +135,7 @@
   </section>
 
   <!-- 加入我们 -->
-  <div class="join-section" data-aos="zoom-in" style="background: linear-gradient(rgba(255,255,255,0.55), rgba(255,255,255,0.55)), url('https://image.fatcattech.cn/i/2026/10/18/ujoqw2.png') center/cover no-repeat;">
+  <div class="join-section" data-aos="zoom-in" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://image.fatcattech.cn/i/2026/10/18/ujoqw2.png') center/cover no-repeat;">
     <h2>加入我们</h2>
     <p>欢迎新成员加入瞰界，一起探索世界的无限可能。</p>
     <a href="join.html" class="btn btn-primary">立即加入</a>
@@ -163,7 +163,7 @@
   <footer>
     <div class="footer-logo">瞰界 Horizon Capture</div>
     <p>contact@kanjiesheying.qq.com</p>
-    <p class="copyright">© 2025 瞰界 Horizon Capture. All rights reserved.</p>
+    <p class="copyright">© 2026 瞰界 Horizon Capture. All rights reserved.</p>
   </footer>
 
   <!-- Lightbox 弹窗 -->
@@ -221,7 +221,9 @@
         "https://image.fatcattech.cn/i/2026/10/18/up859r.png",
         "https://image.fatcattech.cn/i/2026/10/18/up8eb7.png",
         "https://image.fatcattech.cn/i/2026/10/18/up8bhc.png",
-        "https://image.fatcattech.cn/i/2026/10/18/up8fcf.png"
+        "https://image.fatcattech.cn/i/2026/10/18/up8fcf.png",
+        "https://image.fatcattech.cn/i/2026/10/18/zau65c.png",
+        "https://image.fatcattech.cn/i/2026/10/18/zatzen.png"
       ],
       movie: [
         "https://image.fatcattech.cn/i/2026/10/18/uqvuq3.jpg"
@@ -271,7 +273,6 @@
         updateHomeLightbox();
         homeLightbox.classList.add('active');
         
-        // 如果只有一张图，隐藏左右按钮
         if (images.length === 1) {
           homePrevBtn.style.display = 'none';
           homeNextBtn.style.display = 'none';
@@ -282,13 +283,11 @@
       });
     });
 
-    // 关闭
     homeCloseBtn.addEventListener('click', () => homeLightbox.classList.remove('active'));
     homeLightbox.addEventListener('click', (e) => {
       if (e.target === homeLightbox) homeLightbox.classList.remove('active');
     });
 
-    // 左右切换
     homePrevBtn.addEventListener('click', (e) => {
       e.stopPropagation();
       currentImageIndex = (currentImageIndex - 1 + currentSetImages.length) % currentSetImages.length;
@@ -300,7 +299,6 @@
       updateHomeLightbox();
     });
 
-    // 键盘控制
     document.addEventListener('keydown', (e) => {
       if (!homeLightbox.classList.contains('active')) return;
       if (e.key === 'Escape') homeLightbox.classList.remove('active');
@@ -308,25 +306,16 @@
       if (e.key === 'ArrowRight' && currentSetImages.length > 1) homeNextBtn.click();
     });
 
-    // 移动端滑动支持
     let touchStartX = 0;
     let touchEndX = 0;
-    
     homeLightbox.addEventListener('touchstart', (e) => {
       touchStartX = e.changedTouches[0].screenX;
     }, { passive: true });
-
     homeLightbox.addEventListener('touchend', (e) => {
       touchEndX = e.changedTouches[0].screenX;
       if (currentSetImages.length <= 1) return;
-      
-      if (touchStartX - touchEndX > 50) {
-        // 向左滑，下一张
-        homeNextBtn.click();
-      } else if (touchEndX - touchStartX > 50) {
-        // 向右滑，上一张
-        homePrevBtn.click();
-      }
+      if (touchStartX - touchEndX > 50) homeNextBtn.click();
+      else if (touchEndX - touchStartX > 50) homePrevBtn.click();
     }, { passive: true });
   </script>
 </body>
