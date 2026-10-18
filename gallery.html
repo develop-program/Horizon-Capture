@@ -34,62 +34,71 @@
     </div>
 
     <div class="gallery-masonry" id="galleryGrid" data-aos="fade-up">
-      <div class="gallery-item" data-category="航空摄影">
-        <div class="placeholder-img">航空摄影</div>
-        <div class="item-overlay"><span>起飞瞬间</span></div>
-      </div>
-      <div class="gallery-item" data-category="风景">
-        <div class="placeholder-img">风景</div>
-        <div class="item-overlay"><span>云端日落</span></div>
-      </div>
-      <div class="gallery-item" data-category="动物">
-        <div class="placeholder-img">动物</div>
+      <!-- 1. 腾冲鸟类 (绑定多图) -->
+      <div class="gallery-item" data-category="动物" data-images='[
+        "https://image.fatcattech.cn/i/2026/10/18/unu0nx.jpg",
+        "https://image.fatcattech.cn/i/2026/10/18/untwke.jpg",
+        "https://image.fatcattech.cn/i/2026/10/18/unua0r.jpg",
+        "https://image.fatcattech.cn/i/2026/10/18/unu43g.jpg",
+        "https://image.fatcattech.cn/i/2026/10/18/unv537.jpg",
+        "https://image.fatcattech.cn/i/2026/10/18/unwuhf.png",
+        "https://image.fatcattech.cn/i/2026/10/18/unwp3u.jpg",
+        "https://image.fatcattech.cn/i/2026/10/18/unwti2.jpg",
+        "https://image.fatcattech.cn/i/2026/10/18/unyh4b.png",
+        "https://image.fatcattech.cn/i/2026/10/18/unykyt.jpg",
+        "https://image.fatcattech.cn/i/2026/10/18/unyqcb.jpg",
+        "https://image.fatcattech.cn/i/2026/10/18/unyrap.jpg"
+      ]'>
+        <img src="https://image.fatcattech.cn/i/2026/10/18/unu0nx.jpg" style="width:100%; height:100%; object-fit:cover;">
         <div class="item-overlay"><span>腾冲鸟类</span></div>
       </div>
-      <div class="gallery-item" data-category="活动">
-        <div class="placeholder-img">活动</div>
-        <div class="item-overlay"><span>团队外拍</span></div>
+
+      <!-- 2. 微电影 (外链跳转) -->
+      <div class="gallery-item" data-category="视频" onclick="window.open('https://b23.tv/zNdb6Ew', '_blank')">
+        <img src="https://image.fatcattech.cn/i/2026/10/18/uqvuq3.jpg" style="width:100%; height:100%; object-fit:cover;">
+        <div class="item-overlay"><span>微电影</span></div>
       </div>
-      <div class="gallery-item" data-category="视频">
-        <div class="placeholder-img">视频</div>
-        <div class="item-overlay"><span>微电影预告</span></div>
-      </div>
-      <div class="gallery-item" data-category="航空摄影">
-        <div class="placeholder-img">航空摄影</div>
-        <div class="item-overlay"><span>穿云</span></div>
-      </div>
-      <div class="gallery-item" data-category="风景">
-        <div class="placeholder-img">风景</div>
+
+      <!-- 3. 城市剪影 (绑定多图) -->
+      <div class="gallery-item" data-category="风景" data-images='[
+        "https://image.fatcattech.cn/i/2026/10/18/umxcej.jpg",
+        "https://image.fatcattech.cn/i/2026/10/18/umxblg.jpg",
+        "https://image.fatcattech.cn/i/2026/10/18/umxcha.jpg",
+        "https://image.fatcattech.cn/i/2026/10/18/umxm6f.jpg",
+        "https://image.fatcattech.cn/i/2026/10/18/umxny1.jpg",
+        "https://image.fatcattech.cn/i/2026/10/18/umxj3j.jpg",
+        "https://image.fatcattech.cn/i/2026/10/18/umxko6.jpg"
+      ]'>
+        <img src="https://image.fatcattech.cn/i/2026/10/18/umxcej.jpg" style="width:100%; height:100%; object-fit:cover;">
         <div class="item-overlay"><span>城市剪影</span></div>
       </div>
+
+      <!-- 4. 犀鸟谷 (保留) -->
       <div class="gallery-item" data-category="动物">
         <div class="placeholder-img">动物</div>
         <div class="item-overlay"><span>犀鸟谷</span></div>
       </div>
-      <div class="gallery-item" data-category="活动">
-        <div class="placeholder-img">活动</div>
-        <div class="item-overlay"><span>一周年庆</span></div>
-      </div>
-      <div class="gallery-item" data-category="视频">
-        <div class="placeholder-img">视频</div>
-        <div class="item-overlay"><span>幕后花絮</span></div>
-      </div>
-      <div class="gallery-item" data-category="航空摄影">
-        <div class="placeholder-img">航空摄影</div>
-        <div class="item-overlay"><span>夜间降落</span></div>
-      </div>
+
+      <!-- 5. 雪山经幡 (保留) -->
       <div class="gallery-item" data-category="风景">
         <div class="placeholder-img">风景</div>
         <div class="item-overlay"><span>雪山经幡</span></div>
       </div>
+
+      <!-- 6. 起飞瞬间 (移到最后) -->
+      <div class="gallery-item" data-category="航空摄影">
+        <div class="placeholder-img">航空摄影</div>
+        <div class="item-overlay"><span>起飞瞬间</span></div>
+      </div>
     </div>
   </section>
 
+  <!-- Lightbox 弹窗 -->
   <div class="lightbox" id="lightbox">
     <span class="lightbox-close" id="closeLightbox">&times;</span>
     <button class="lightbox-nav prev" id="prevBtn">‹</button>
     <div class="lightbox-content" id="lightboxContent">
-      <div class="placeholder-img" style="width:100%; height:60vh;">图片</div>
+      <!-- 动态插入图片或占位 -->
     </div>
     <button class="lightbox-nav next" id="nextBtn">›</button>
   </div>
@@ -103,6 +112,7 @@
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script src="js/main.js"></script>
   <script>
+    // 筛选逻辑
     const filterBtns = document.querySelectorAll('.filter-btn');
     const items = document.querySelectorAll('.gallery-item');
 
@@ -121,38 +131,80 @@
       });
     });
 
+    // 灯箱逻辑
     const lightbox = document.getElementById('lightbox');
     const lightboxContent = document.getElementById('lightboxContent');
     const closeBtn = document.getElementById('closeLightbox');
     const prevBtn = document.getElementById('prevBtn');
     const nextBtn = document.getElementById('nextBtn');
+    
     let currentItems = [];
     let currentIndex = 0;
 
     function updateLightbox() {
       const item = currentItems[currentIndex];
-      const overlayText = item.querySelector('.item-overlay span').textContent;
-      lightboxContent.innerHTML = `<div class="placeholder-img" style="width:100%; height:60vh;">${overlayText}</div>`;
+      if (!item) return;
+
+      if (item.src) {
+        // 有真实图片
+        lightboxContent.innerHTML = `<img src="${item.src}" style="max-width:100%; max-height:80vh; object-fit:contain; border-radius:8px;">`;
+      } else {
+        // 占位色块
+        lightboxContent.innerHTML = `<div class="placeholder-img" style="width:100%; height:60vh; border-radius:16px; font-size:2rem;">${item.text}</div>`;
+      }
     }
 
     items.forEach((item) => {
-      item.addEventListener('click', () => {
-        currentItems = Array.from(document.querySelectorAll('.gallery-item')).filter(i => i.style.display !== 'none');
-        currentIndex = currentItems.indexOf(item);
-        if (currentIndex === -1) currentIndex = 0;
+      item.addEventListener('click', (e) => {
+        // 如果卡片有 onclick 属性（比如微电影跳转），直接跳过灯箱逻辑
+        if (item.getAttribute('onclick')) return;
+        
+        e.preventDefault();
+        
+        // 判断是否包含多图数据
+        if (item.dataset.images) {
+          const imageUrls = JSON.parse(item.dataset.images);
+          currentItems = imageUrls.map(url => ({ src: url }));
+          currentIndex = 0; // 默认从第一张开始
+        } else {
+          // 单图或占位图：将所有不含 data-images 且未设置 onclick 的卡片收集起来作为图集
+          const allSingleItems = Array.from(document.querySelectorAll('.gallery-item'))
+            .filter(i => i.style.display !== 'none' && !i.dataset.images && !i.getAttribute('onclick'))
+            .map(i => {
+              const img = i.querySelector('img');
+              const text = i.querySelector('.item-overlay span').textContent;
+              return { src: img ? img.src : null, text: text };
+            });
+          
+          currentItems = allSingleItems;
+          
+          // 找到当前点击的卡片在数组中的索引
+          const clickedImg = item.querySelector('img')?.src;
+          const clickedText = item.querySelector('.item-overlay span').textContent;
+          
+          currentIndex = currentItems.findIndex(i => 
+            (clickedImg && i.src === clickedImg) || (!clickedImg && i.text === clickedText)
+          );
+          if (currentIndex === -1) currentIndex = 0;
+        }
+
         updateLightbox();
         lightbox.classList.add('active');
       });
     });
 
     closeBtn.addEventListener('click', () => lightbox.classList.remove('active'));
-    prevBtn.addEventListener('click', () => {
-      if (currentItems.length === 0) return;
+    
+    prevBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (currentItems.length <= 1) return;
       currentIndex = (currentIndex - 1 + currentItems.length) % currentItems.length;
       updateLightbox();
     });
-    nextBtn.addEventListener('click', () => {
-      if (currentItems.length === 0) return;
+    
+    nextBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (currentItems.length <= 1) return;
       currentIndex = (currentIndex + 1) % currentItems.length;
       updateLightbox();
     });
@@ -167,6 +219,19 @@
     lightbox.addEventListener('click', (e) => {
       if (e.target === lightbox) lightbox.classList.remove('active');
     });
+
+    // 移动端滑动支持
+    let touchStartX = 0;
+    let touchEndX = 0;
+    lightbox.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+    lightbox.addEventListener('touchend', (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      if (currentItems.length <= 1) return;
+      if (touchStartX - touchEndX > 50) nextBtn.click();
+      else if (touchEndX - touchStartX > 50) prevBtn.click();
+    }, { passive: true });
   </script>
 </body>
 </html>
