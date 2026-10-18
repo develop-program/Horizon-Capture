@@ -68,6 +68,14 @@ body {
   border-bottom: 1px solid var(--accent);
 }
 
+/* 子页面实底导航栏：默认就有背景，不依赖滚动 */
+.navbar.solid {
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border-bottom: 1px solid var(--accent-light);
+}
+
 .logo {
   font-size: 1.8rem;
   font-weight: 700;
@@ -490,7 +498,7 @@ footer {
 
 /* ========== About 页面 ========== */
 .page-section {
-  padding: 120px 24px 80px;
+  padding: calc(var(--nav-h) + 50px) 24px 80px;
   max-width: var(--max-width);
   margin: 0 auto;
 }
