@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>一周年特辑 · 瞰界 Horizon Capture</title>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* 专属样式：竖向时间轴 */
+    .timeline-wrapper {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 60px;
+      margin-top: 3rem;
+    }
+
+    .timeline-left {
+      position: relative;
+      border-left: 2px solid var(--accent-light);
+      padding-left: 24px;
+    }
+
+    .timeline-node {
+      position: relative;
+      padding: 12px 0 12px 16px;
+      cursor: pointer;
+      font-weight: 600;
+      color: var(--text-secondary);
+      transition: color 0.3s;
+      list-style: none;
+    }
+
+    /* 左侧圆点 */
+    .timeline-node::before {
+      content: '';
+      position: absolute;
+      left: -33px;
+      top: 18px;
+      width: 14px;
+      height: 14px;
+      background: var(--bg);
+      border: 2px solid var(--accent-deep);
+      border-radius: 50%;
+      transition: background 0.3s, transform 0.3s;
+    }
+
+    /* 选中状态 */
+    .timeline-node.active {
+      color: var(--text);
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+    
+    .timeline-node.active::before {
+      background: var(--accent-deep);
+      transform: scale(1.2);
+    }
+
+    .timeline-node:hover {
+      color: var(--text);
+    }
+
+    /* 右侧卡片 */
+    .timeline-detail {
+      background: var(--bg);
+      border-radius: 24px;
+      padding: 48px 40px;
+      box-shadow: 0 12px 32px rgba(179, 222, 255, 0.2);
+      border: 1px solid var(--accent-light);
+      min-height: 300px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      transition: opacity 0.3s;
+    }
+
+    .detail-date {
+      color: var(--accent-deep);
+      font-weight: 700;
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .detail-title {
+      font-size: 2rem;
+      font-weight: 800;
+      margin-bottom: 1.5rem;
+    }
+
+    .detail-desc {
+      color: var(--text-secondary);
+      line-height: 1.8;
+      font-size: 1.05rem;
+    }
+
+    /* 移动端适配 */
+    @media (max-width: 768px) {
+      .timeline-wrapper {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+      
+      .timeline-left {
+        border-left: none;
+        border-bottom: 2px solid var(--accent-light);
+        padding-left: 0;
+        padding-bottom: 20px;
+        display: flex;
+        overflow-x: auto;
+        gap: 12px;
+      }
+
+      .timeline-node {
+        white-space: nowrap;
+        padding: 8px 16px;
+        background: var(--accent-soft);
+        border-radius: 20px;
+      }
+      
+      .timeline-node::before {
+        display: none;
+      }
+      
+      .timeline-node.active {
+        background: var(--accent);
+        color: var(--text);
+      }
+
+      .timeline-detail {
+        padding: 32px 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar solid" id="navbar">
+    <a href="index.html" class="logo">瞰界Horizon Capture</a>
+    <ul class="nav-links">
+      <li><a href="index.html">首页</a></li>
+      <li><a href="about.html">关于</a></li>
+      <li><a href="gallery.html">作品</a></li>
+      <li><a href="team.html">成员</a></li>
+      <li><a href="join.html">加入</a></li>
+      <li><a href="contact.html">联系</a></li>
+    </ul>
+  </nav>
+
+  <section class="page-section">
+    <h1 class="section-title" data-aos="fade-up">一周年特辑</h1>
+    <p class="section-subtitle" data-aos="fade-up">从梦想到现实，记录瞰界 Horizon Capture 的成长轨迹。</p>
+
+    <div class="timeline-wrapper" data-aos="fade-up">
+      <!-- 左侧节点 -->
+      <div class="timeline-left" id="timelineLeft">
+        <div class="timeline-node active" data-index="0">2025.04 成立</div>
+        <div class="timeline-node" data-index="1">2025.08 微电影</div>
+        <div class="timeline-node" data-index="2">2026.01 第一次外拍</div>
+        <div class="timeline-node" data-index="3">2026.02 大疆获奖</div>
+        <div class="timeline-node" data-index="4">2026.03 大疆一等奖</div>
+        <div class="timeline-node" data-index="5">2026.07 签约大疆</div>
+        <div class="timeline-node" data-index="6">2026.08 铭匠合作</div>
+      </div>
+
+      <!-- 右侧详情卡片 -->
+      <div class="timeline-detail" id="timelineDetail">
+        <!-- JS 动态填充 -->
+      </div>
+    </div>
+
+    <!-- 致谢词 -->
+    <div style="text-align: center; margin-top: 80px;" data-aos="fade-up">
+      <p style="font-size: 1.2rem; font-weight: 600; margin-bottom: 1rem; color: var(--text);">
+        “我们不是专业团队，只是不愿放弃热爱的普通学生。”
+      </p>
+      <p style="color: var(--text-secondary); margin-bottom: 2rem;">
+        感谢每一位关注者、粉丝朋友的支持。故事还在继续，我们顶峰相见。
+      </p>
+      <a href="https://b23.tv/zNdb6Ew" target="_blank" class="btn btn-primary btn-large">观看周年宣传片</a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-logo">瞰界 Horizon Capture</div>
+    <p>contact@kanjiesheying.qq.com</p>
+    <p class="copyright">© 2026 瞰界 Horizon Capture. All rights reserved.</p>
+  </footer>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    // 时间轴节点数据
+    const events = [
+      {
+        date: '2025年4月',
+        title: '瞰界正式成立',
+        desc: '一群对摄影充满热爱的学生自发组建。从第一次按下快门，到探索世界的第二种可能，我们正式踏上了旅途。'
+      },
+      {
+        date: '2025年8月',
+        title: '首部微电影发布',
+        desc: '由YG导演、编剧，团队成员共同出演的第一部微电影上线。那是我们第一次用动态影像讲述故事，收获了第一批粉丝与感动。'
+      },
+      {
+        date: '2026年1月',
+        title: '第一次外拍 · 腾冲',
+        desc: '追羽揽星河带队前往云南腾冲百花岭与犀鸟谷。我们在高黎贡山下守候飞羽，完成了一次难忘的鸟类生态专题拍摄。'
+      },
+      {
+        date: '2026年2月',
+        title: '大疆获奖',
+        desc: '团队作品获得大疆相关奖项的认可，这给了我们极大的鼓励，也让更多人看到了瞰界的坚持与潜力。'
+      },
+      {
+        date: '2026年3月',
+        title: '大疆创作者大赛一等奖',
+        desc: '凭借扎实的影像功底与独特的旅行故事视角，我们荣获大疆创作者大赛一等奖。这是里程碑式的突破。'
+      },
+      {
+        date: '2026年7月',
+        title: '签约大疆电源',
+        desc: '团队主创正式与大疆达成合作，成为大疆电源签约创作者。我们将带着更专业的设备与更大的舞台继续探索。'
+      },
+      {
+        date: '2026年8月',
+        title: '铭匠镜头合作',
+        desc: '与知名光学品牌铭匠展开合作。在光影创作的道路上，我们又多了一位志同道合的伙伴。'
+      }
+    ];
+
+    const nodes = document.querySelectorAll('.timeline-node');
+    const detailContainer = document.getElementById('timelineDetail');
+
+    // 渲染详情内容
+    function renderDetail(index) {
+      const event = events[index];
+      
+      // 设置过渡效果
+      detailContainer.style.opacity = 0;
+      
+      setTimeout(() => {
+        detailContainer.innerHTML = `
+          <div class="detail-date">${event.date}</div>
+          <h3 class="detail-title">${event.title}</h3>
+          <p class="detail-desc">${event.desc}</p>
+        `;
+        detailContainer.style.opacity = 1;
+      }, 150);
+    }
+
+    // 初始化
+    renderDetail(0);
+
+    // 点击切换逻辑
+    nodes.forEach(node => {
+      node.addEventListener('click', () => {
+        // 移除所有 active
+        nodes.forEach(n => n.classList.remove('active'));
+        // 添加当前 active
+        node.classList.add('active');
+        
+        // 渲染内容
+        const index = parseInt(node.getAttribute('data-index'));
+        renderDetail(index);
+      });
+    });
+  </script>
+</body>
+</html>
