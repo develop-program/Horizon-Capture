@@ -33,6 +33,10 @@
         <h3 class="member-name">YG</h3>
         <p class="member-role">创始人 / 商务</p>
         <p class="member-bio">视频号/B站创作者，大疆电源签约创作者，在B站作出百万爆款视频，擅长自然风光、人像摄影，和大疆铭匠等品牌保持合作。</p>
+        <div class="member-links">
+          <span class="member-pending-link">「城市角落」图片待补充</span>
+          <span class="member-pending-link">「微电影」B站链接待补充</span>
+        </div>
         <button class="member-detail-toggle" onclick="openLightbox('yg')">查看作品</button>
       </div>
 
@@ -44,6 +48,10 @@
         <h3 class="member-name">追羽揽星河</h3>
         <p class="member-role">主力摄影师</p>
         <p class="member-bio">擅长自然生态摄影，春节期间在云南百花岭和犀鸟谷完成鸟类专题拍摄，星空摄影，胶片冲洗，Sony Imaging PRO Support 专业会员。</p>
+        <div class="member-links">
+          <a href="https://v.douyin.com/9OnUNkDJEWg/" target="_blank" class="member-link-item">「自然生灵」抖音代表作</a>
+          <span class="member-pending-link">「星空故事」图片待补充</span>
+        </div>
         <button class="member-detail-toggle" onclick="openLightbox('zhuiyu')">查看作品</button>
       </div>
 
@@ -88,10 +96,8 @@
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script src="js/main.js"></script>
   <script>
-    // 成员对应的精选作品图集
     const memberWorks = {
       yg: [
-        // 城市角落
         "https://image.fatcattech.cn/i/2026/10/18/umxcej.jpg",
         "https://image.fatcattech.cn/i/2026/10/18/umxblg.jpg",
         "https://image.fatcattech.cn/i/2026/10/18/umxcha.jpg",
@@ -99,11 +105,9 @@
         "https://image.fatcattech.cn/i/2026/10/18/umxny1.jpg",
         "https://image.fatcattech.cn/i/2026/10/18/umxj3j.jpg",
         "https://image.fatcattech.cn/i/2026/10/18/umxko6.jpg",
-        // 微电影
         "https://image.fatcattech.cn/i/2026/10/18/uqvuq3.jpg"
       ],
       zhuiyu: [
-        // 自然生灵
         "https://image.fatcattech.cn/i/2026/10/18/unu0nx.jpg",
         "https://image.fatcattech.cn/i/2026/10/18/untwke.jpg",
         "https://image.fatcattech.cn/i/2026/10/18/unua0r.jpg",
@@ -116,13 +120,14 @@
         "https://image.fatcattech.cn/i/2026/10/18/unykyt.jpg",
         "https://image.fatcattech.cn/i/2026/10/18/unyqcb.jpg",
         "https://image.fatcattech.cn/i/2026/10/18/unyrap.jpg",
-        // 星空故事
         "https://image.fatcattech.cn/i/2026/10/18/up88dx.png",
         "https://image.fatcattech.cn/i/2026/10/18/up83xh.png",
         "https://image.fatcattech.cn/i/2026/10/18/up859r.png",
         "https://image.fatcattech.cn/i/2026/10/18/up8eb7.png",
         "https://image.fatcattech.cn/i/2026/10/18/up8bhc.png",
-        "https://image.fatcattech.cn/i/2026/10/18/up8fcf.png"
+        "https://image.fatcattech.cn/i/2026/10/18/up8fcf.png",
+        "https://image.fatcattech.cn/i/2026/10/18/zau65c.png",
+        "https://image.fatcattech.cn/i/2026/10/18/zatzen.png"
       ]
     };
 
@@ -150,7 +155,6 @@
       updateTeamLightbox();
       teamLightbox.classList.add('active');
 
-      // 如果只有一张图，隐藏左右按钮
       if (images.length === 1) {
         teamPrevBtn.style.display = 'none';
         teamNextBtn.style.display = 'none';
@@ -183,23 +187,16 @@
       if (e.key === 'ArrowRight' && currentSetImages.length > 1) teamNextBtn.click();
     });
 
-    // 移动端滑动支持
     let touchStartX = 0;
     let touchEndX = 0;
-    
     teamLightbox.addEventListener('touchstart', (e) => {
       touchStartX = e.changedTouches[0].screenX;
     }, { passive: true });
-
     teamLightbox.addEventListener('touchend', (e) => {
       touchEndX = e.changedTouches[0].screenX;
       if (currentSetImages.length <= 1) return;
-      
-      if (touchStartX - touchEndX > 50) {
-        teamNextBtn.click();
-      } else if (touchEndX - touchStartX > 50) {
-        teamPrevBtn.click();
-      }
+      if (touchStartX - touchEndX > 50) teamNextBtn.click();
+      else if (touchEndX - touchStartX > 50) teamPrevBtn.click();
     }, { passive: true });
   </script>
 </body>
