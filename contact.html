@@ -8,15 +8,15 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <nav class="navbar" id="navbar">
+  <nav class="navbar solid" id="navbar">
     <a href="index.html" class="logo">瞰界Horizon Capture</a>
     <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="gallery.html">Gallery</a></li>
-      <li><a href="team.html">Team</a></li>
-      <li><a href="join.html">Join</a></li>
-      <li><a href="contact.html">Contact</a></li>
+      <li><a href="index.html">首页</a></li>
+      <li><a href="about.html">关于</a></li>
+      <li><a href="gallery.html">作品</a></li>
+      <li><a href="team.html">成员</a></li>
+      <li><a href="join.html">加入</a></li>
+      <li><a href="contact.html">联系</a></li>
     </ul>
   </nav>
 
@@ -24,7 +24,6 @@
     <h1 class="section-title" data-aos="fade-up">联系我们</h1>
     <p class="section-subtitle" data-aos="fade-up">有任何问题、合作意向，或只是想聊聊摄影与飞行，随时联系我们。</p>
 
-    <!-- 联系信息 -->
     <div class="contact-info-grid" data-aos="fade-up">
       <div class="contact-info-card">
         <span class="contact-icon">📧</span>
@@ -47,14 +46,12 @@
       </div>
     </div>
 
-    <!-- Google Map 占位 -->
     <div class="map-placeholder" data-aos="fade-up">
       <div class="placeholder-img map-inner">
         <span>Google Map 预留</span>
       </div>
     </div>
 
-    <!-- 留言表单 -->
     <div class="contact-form-card" data-aos="fade-up">
       <h2>给我们留言</h2>
       <p style="color:var(--text-secondary); margin-bottom:2rem;">期待听到你的声音。</p>
@@ -81,7 +78,6 @@
       </form>
     </div>
 
-    <!-- FAQ 折叠（Contact 页补充） -->
     <div class="join-card" data-aos="fade-up" style="margin-top:60px;">
       <h3>常见问题</h3>
       <div class="faq-list">
@@ -110,10 +106,8 @@
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script src="js/main.js"></script>
   <script>
-    // 留言表单提交（预留 EmailJS 接口）
     document.getElementById('contactForm').addEventListener('submit', function(e) {
       e.preventDefault();
-      // EmailJS 接入后在此处添加发送逻辑
       alert('留言功能即将上线，目前请直接发送邮件至 kanjiesheying@qq.com');
       this.reset();
     });
