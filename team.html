@@ -25,21 +25,13 @@
     <p class="section-subtitle" data-aos="fade-up">因为热爱，所以相聚。</p>
 
     <div class="team-grid-full" data-aos="fade-up">
-      <div class="team-card-full" data-member="hfunyin">
-        <div class="member-avatar placeholder-img">图片</div>
-        <h3 class="member-name">Hfunyin</h3>
-        <p class="member-role">创始人 / 运营</p>
-        <p class="member-bio">运营抖音账号，获大疆创作者激励大赛二等奖，以旅行故事讲好了一份坚守。</p>
-        <div class="member-links">
-          <a href="https://v.douyin.com/bNrMn_zx50Y/" target="_blank" class="member-link-item">「旅途光影」抖音代表作</a>
-        </div>
-        <button class="member-detail-toggle" onclick="toggleDetail('hfunyin')">查看详情</button>
-      </div>
-
+      <!-- 1. YG -->
       <div class="team-card-full" data-member="yg">
-        <div class="member-avatar placeholder-img">图片</div>
+        <div class="member-avatar">
+          <img src="https://image.fatcattech.cn/i/2026/10/18/uhf5v1.jpg" alt="YG" style="width:100%; height:100%; object-fit:cover; display:block;">
+        </div>
         <h3 class="member-name">YG</h3>
-        <p class="member-role">资金与后期运营</p>
+        <p class="member-role">创始人 / 商务</p>
         <p class="member-bio">视频号 / B站内容策划者，有微电影拍摄经验，擅长人像摄影和视频制作。</p>
         <div class="member-links">
           <span class="member-pending-link">「城市角落」图片待补充</span>
@@ -48,10 +40,13 @@
         <button class="member-detail-toggle" onclick="toggleDetail('yg')">查看详情</button>
       </div>
 
+      <!-- 2. 追羽揽星河 -->
       <div class="team-card-full" data-member="zhuiyu">
-        <div class="member-avatar placeholder-img">图片</div>
+        <div class="member-avatar">
+          <img src="https://image.fatcattech.cn/i/2026/10/18/ui4k3k.jpg" alt="追羽揽星河" style="width:100%; height:100%; object-fit:cover; display:block;">
+        </div>
         <h3 class="member-name">追羽揽星河</h3>
-        <p class="member-role">主力摄影师 / 合伙人</p>
+        <p class="member-role">主力摄影师</p>
         <p class="member-bio">擅长自然生态摄影，春节期间在云南百花岭和犀鸟谷完成鸟类专题拍摄，星空摄影，胶片冲洗，Sony Imaging PRO Support 专业会员。</p>
         <div class="member-links">
           <a href="https://v.douyin.com/9OnUNkDJEWg/" target="_blank" class="member-link-item">「自然生灵」抖音代表作</a>
@@ -60,12 +55,26 @@
         <button class="member-detail-toggle" onclick="toggleDetail('zhuiyu')">查看详情</button>
       </div>
 
+      <!-- 3. 易匀 -->
       <div class="team-card-full" data-member="yiyun">
-        <div class="member-avatar placeholder-img">图片</div>
+        <div class="member-avatar">
+          <img src="https://image.fatcattech.cn/i/2026/10/18/uj6dz7.jpg" alt="易匀" style="width:100%; height:100%; object-fit:cover; display:block;">
+        </div>
         <h3 class="member-name">易匀</h3>
         <p class="member-role">后期剪辑</p>
         <p class="member-bio">负责团队视频后期制作，用剪辑讲述镜头语言。</p>
         <button class="member-detail-toggle" onclick="toggleDetail('yiyun')">查看详情</button>
+      </div>
+
+      <!-- 4. 冬清宁 -->
+      <div class="team-card-full" data-member="dongqingning">
+        <div class="member-avatar">
+          <img src="https://image.fatcattech.cn/i/2026/10/18/ujbpms.jpg" alt="冬清宁" style="width:100%; height:100%; object-fit:cover; display:block;">
+        </div>
+        <h3 class="member-name">冬清宁</h3>
+        <p class="member-role">助理 / 运营</p>
+        <p class="member-bio">负责团队日常运营与辅助工作，用细心与热情支持每一次拍摄与创作。</p>
+        <button class="member-detail-toggle" onclick="toggleDetail('dongqingning')">查看详情</button>
       </div>
     </div>
   </section>
@@ -88,25 +97,17 @@
   <script src="js/main.js"></script>
   <script>
     const memberDetails = {
-      hfunyin: {
-        name: 'Hfunyin',
-        role: '创始人 / 运营',
-        bio: '运营抖音账号，获大疆创作者激励大赛二等奖，以旅行故事讲好了一份坚守。',
-        equipment: 'Sony A7M3, DJI Mini3 Pro',
-        works: '旅途光影系列',
-        links: '<a href="https://v.douyin.com/bNrMn_zx50Y/" target="_blank">抖音代表作</a>'
-      },
       yg: {
         name: 'YG',
-        role: '资金与后期运营',
-        bio: '视频号/B站内容策划者，有微电影拍摄经验，擅长人像摄影和视频制作。',
+        role: '创始人 / 商务',
+        bio: '视频号 / B站内容策划者，有微电影拍摄经验，擅长人像摄影和视频制作。',
         equipment: 'Sony A7R2, DJI Air3s',
         works: '城市角落、微电影',
         links: '作品链接待补充'
       },
       zhuiyu: {
         name: '追羽揽星河',
-        role: '主力摄影师 / 合伙人',
+        role: '主力摄影师',
         bio: '擅长自然生态摄影，云南百花岭和犀鸟谷鸟类专题，星空摄影，胶片冲洗，Sony Imaging PRO Support 专业会员。',
         equipment: 'Sony A6700, 胶片机, DJI Mavic Pro',
         works: '自然生灵、星空故事',
@@ -118,6 +119,14 @@
         bio: '负责团队视频后期制作，用剪辑讲述镜头语言。',
         equipment: 'DaVinci Resolve, Premiere Pro',
         works: '多部微电影后期',
+        links: ''
+      },
+      dongqingning: {
+        name: '冬清宁',
+        role: '助理 / 运营',
+        bio: '负责团队日常运营与辅助工作，用细心与热情支持每一次拍摄与创作。',
+        equipment: '待补充',
+        works: '待补充',
         links: ''
       }
     };
